@@ -12,4 +12,14 @@ coffeeRouter.get("/", async (req, res) => {
   }
 });
 
+coffeeRouter.get("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    let coffees = await coffeeModel.findById(id);
+    res.status(200).send(coffees);
+  } catch (error) {
+    res.status(404).send({ msg: error.message });
+  }
+});
+
 export { coffeeRouter };
