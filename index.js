@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import { connection } from "./config/db.js";
 import { userRouter } from "./routes/userRoutes.js";
 import { coffeeRouter } from "./routes/coffeeRoutes.js";
+import { cartRouter } from "./routes/cartRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -21,6 +22,7 @@ app.get("/", async (req, res) => {
 
 app.use("/users", userRouter);
 app.use("/coffees", coffeeRouter);
+app.use("/carts", cartRouter);
 
 app.listen(process.env.PORT_LINK, async () => {
   try {
